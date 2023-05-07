@@ -72,18 +72,18 @@ Pristatote naudojamus metodus
 
 \begin{equation}
 \mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
-\label{eq:lygtis1}
+% \label{eq:lygtis1}
 \end{equation}
 
-Taikyta nuostolių funkcija ~\eqref{eq:lygtis1}.
+% Taikyta nuostolių funkcija ~\eqref{eq:lygtis1}.
 
 \begin{align}
 y & = f(x) \nonumber \\
 f & = f_1(f_2(x))
-\label{eq:lygtis2}
+% \label{eq:lygtis2}
 \end{align}
 
-Taikytas modelis ~\eqref{eq:lygtis2}.
+% Taikytas modelis ~\eqref{eq:lygtis2}.
 
 
 \section{Transformer ir TP-Transformer}
@@ -95,9 +95,9 @@ Aprašote naudojamus duomenis.
 
 \subsection{Paveikslėliai ir lentelės}
 
-Paveikslėlį cituojame ``~\ref{fig} pav.''.
+% Paveikslėlį cituojame ``~\ref{fig} pav.''.
 
-Paveikslėlį cituojame ``~\ref{tab1} lentelė''.
+% Paveikslėlį cituojame ``~\ref{tab1} lentelė''.
 
 \begin{table}[htbp]
 \caption{Lentelės aprašas}
@@ -124,10 +124,11 @@ iAsk.Ai}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lygin
 specialiai pritaikytų matematikos uždaviniams spręsti.
 
 \subsection{ischlag/TP-Transformer}
-Šio modelio sukūrimui į standartinį transformerio tipo modelį buvo inkorporuota Tenzoriaus-Produkto
+Šio modelio sukūrimui į standartinį transformerio tipo modelį buvo integruota Tenzoriaus-Produkto
 reprezentacija, tokiu būdu pagerinant išskirtinius sąryšius tarp transformerio vidinių struktūrų. Modelis buvo apmokytas
 naudojant „Mathematics-Dataset“, kuris buvo išskaidytas į 56 skirtingas matematikos šakas, siekiant
-pagerinti modelio tikslumą bei atpažinamumą
+pagerinti modelio tikslumą bei atpažinamumą. Mūsų pasirinkta iš anksto ištreniruota modelio 
+versija buvo treniruojama su 1.7 milijono duomenų.
 
 \subsection{iAsk.Ai}
 Šis kalbos variklis naudoja panašias technologijas, kaip ir \textbf{ChatGPT} variklis, tačiau
@@ -138,10 +139,59 @@ kas suteikia iAsk AI galimybę atsakyti į klausimus objektyviai,
 faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT.
 
 
-\section{Tyrimo Aprašymas}
+\section{Tyrimo Eiga}
+Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
+po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
+Tada visus klausimus užduosime 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiavome
+tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai.
+Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
+\subsection{Algebra}
+\begin{itemize}
+    \item Klausimas: Suppose -2*i + 20 = 5*o, 2*o - 4 = 3*i + o. Suppose -g + 2 = i, 4*g - 6*g = -5*u - 19. Let f be -6 + 3 + 2 + u/(-1). Solve -f*l = -l for l.
+    \item Atsakymas: 0
+\end{itemize}
+\subsection{Aritmetika}
+\begin{itemize}
+    \item Klausimas: What is the tenth root of 95210445 to the nearest integer?
+    \item Atsakymas: 6
+\end{itemize}
+\subsection{Matematinė Analizė}
+\begin{itemize}
+    \item Klausimas: Let s(w) be the third derivative of -7*w**2 - 1/30*w**5 - 23/6*w**3 + 0 + 0*w**6 + w - 1/42*w**7 + 1/24*w**4. What is the second derivative of s(l) wrt l?
+    \item Atsakymas: -60*l**2 - 4
+\end{itemize}
+\subsection{Palyginimas}
+\begin{itemize}
+    \item Klausimas: Suppose -15*p + 48 + 27 = 0. Suppose 13 = 5*f - p*n - 2, 0 = 3*f - 2*n - 8. Let d be (-3 + 110/36)*f. Which is the third biggest value?  (a) 1/6  (b) d  (c) -4
+    \item Atsakymas: c
+\end{itemize}
+\subsection{Konvertavimas}
+\begin{itemize}
+    \item Klausimas: How many micrometers are there in seven halves of a millimeter?
+    \item Atsakymas: 3500
+\end{itemize}
+\subsection{Skaičių Operacijos}
+\begin{itemize}
+    \item Klausimas: Let a(s) = -154*s + 138. Let x be a(0). Let r(f) = -f - 3. Let z be r(-5). Suppose 4*v + u + u - 282 = 0, -2*v + z*u = -x. What are the prime factors of v?
+    \item Atsakymas: 2, 5, 7
+\end{itemize}
+\subsection{Daugianariai}
+\begin{itemize}
+    \item Klausimas: Simplify ((y/y**(1/4)*y)**(3/47)*(y*y*y*y**(4/7)*y*y)/y**5)/(y/((y/(y*y/y**(-2/3)))/y*y*y)*(y*y/(y/(y**2/y)))/y*y**7/y**(4/3)) assuming y is positive.
+    \item Atsakymas: y**(-30203/3948)
+\end{itemize}
+\subsection{Tikimybės}
+\begin{itemize}
+    \item Klausimas: Four letters picked without replacement from {a: 1, b: 1, s: 1, r: 1, q: 2, f: 2}. Give prob of sequence rbaq.
+    \item Atsakymas: 1/840
+\end{itemize}
 
-\subsection{Eiga}
-Iš „Mathematics-Dataset“ duomenų rinkinio 56 kategorijų
+Modelio spėjimai bus klasifikuojami kaip binariainiai: arba modelis atspėjo atsakymą, arba ne.
+Atsakymas buvo laikytas teisingu tik tuo atveju, jei buvo grąžintas lygiai toks pat, kaip ir buvo tikimasi atsakyme.
+Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo sveikasis skaičius, bet modelis grąžino
+nesupaprastintą trupmeną, nors rezultatas yra toks pat, atsakymas buvo užskaitytas kaip neteisingas.
+Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skaičių iš visų klausimų skaičiaus.
+
 \section{Rezultatai}
 
 \section{Išvados}
