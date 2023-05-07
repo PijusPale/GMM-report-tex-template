@@ -27,41 +27,44 @@
 
 \begin{document}
 
-\title{Komandinės užduoties tema}
+\title{Matematikos Sprendimas}
 
-\author{\IEEEauthorblockN{Vardas Pavardė}
+\author{\IEEEauthorblockN{Dominykas Dulevičius}
 \IEEEauthorblockA{\textit{Informatikos institutas} \\
 \textit{Matematikos ir informatikos fakultetas}\\
 Vilnius, Lietuva \\
-epastas@epastas.lt}
+dominykas.dulevicius@mif.stud.vu.lt}
 \and
-\IEEEauthorblockN{Vardas Pavardė}
+\IEEEauthorblockN{Arnas Bulka}
 \IEEEauthorblockA{\textit{Informatikos institutas} \\
 \textit{Matematikos ir informatikos fakultetas}\\
 Vilnius, Lietuva \\
-epastas@epastas.lt}
+arnas.bulka@mif.stud.vu.lt}
 \and
-\IEEEauthorblockN{Vardas Pavardė}
+\IEEEauthorblockN{Pijus Kizerskis}
 \IEEEauthorblockA{\textit{Informatikos institutas} \\
 \textit{Matematikos ir informatikos fakultetas}\\
 Vilnius, Lietuva \\
-epastas@epastas.lt}
+pijus.kizerskis@mif.stud.vu.lt}
 }
 
 \maketitle
 
 \begin{abstract}
-Santrauka kokia problema spręsta. Ką taikėte, kokie rezultatai. 
+Projektinio darbo metu tyrėme irlyginome internete paplitusių populiarių modelių
+galimybes ir tikslumą sprendžiant matematinius uždavinius ir lyginome rezultatus su
+TP-Transformer tipo modeliu, kuris buvo specialiai aptreniruotas su DeepMind kūrėjų
+„Mathematics-Dataset“ duomenų rinkiniu.
 \end{abstract}
 
 \begin{IEEEkeywords}
-5-6 Raktiniai žodžiai
+TP - Tenzoriaus-Produkto
 \end{IEEEkeywords}
 
 \section{Įvadas}
 Pristatote problemą
 
-\section{Metodai}
+\section{Duomenų Rinkinys}
 
 \subsection{Metodas A}
 
@@ -83,7 +86,7 @@ f & = f_1(f_2(x))
 Taikytas modelis ~\eqref{eq:lygtis2}.
 
 
-\section{Duomenys}
+\section{Transformer ir TP-Transformer}
 Aprašote naudojamus duomenis.
 
 \subsection{Equations}
@@ -108,30 +111,43 @@ a & b & c &  d \\
 \end{center}
 \end{table}
 
-\begin{figure}[!h] % įterpti čia
-\centerline{\includegraphics{fig1.png}}
-\caption{Paveikslėlio aprašas.}
-\label{fig}
-\end{figure}
+% \begin{figure}[!h] % įterpti čia
+% \centerline{\includegraphics{fig1.png}}
+% \caption{Paveikslėlio aprašas.}
+% \label{fig}
+% \end{figure}
 
 
+\section{Naudojami Apmokyti Modeliai}
+Lyginti su TP-Transformer pasirinkome 5 iš anksto apmokytus klausimų-atsakymų modelius: \textbf{
+iAsk.Ai}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
+specialiai pritaikytų matematikos uždaviniams spręsti.
+
+\subsection{ischlag/TP-Transformer}
+Šio modelio sukūrimui į standartinį transformerio tipo modelį buvo inkorporuota Tenzoriaus-Produkto
+reprezentacija, tokiu būdu pagerinant išskirtinius sąryšius tarp transformerio vidinių struktūrų. Modelis buvo apmokytas
+naudojant „Mathematics-Dataset“, kuris buvo išskaidytas į 56 skirtingas matematikos šakas, siekiant
+pagerinti modelio tikslumą bei atpažinamumą
+
+\subsection{iAsk.Ai}
+Šis kalbos variklis naudoja panašias technologijas, kaip ir \textbf{ChatGPT} variklis, tačiau
+papildomas dėmesys yra skiriamas optimizuoti natūralios kalbos aprodorojimo modelį. iAsk AI taip pat susideda iš specialiai pritaikyto,
+didelio masto Transformerio kalbos modelio. Šis modelis buvo išskirtinai mokomas remiantis
+patikimiausiais ir autoritetiškiausiais literatūros bei interneto šaltiniais,
+kas suteikia iAsk AI galimybę atsakyti į klausimus objektyviai,
+faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT.
+
+
+\section{Tyrimo Aprašymas}
+
+\subsection{Eiga}
+Iš „Mathematics-Dataset“ duomenų rinkinio 56 kategorijų
 \section{Rezultatai}
 
-\begin{figure*}[ht] % puslapio viršuje
-\centerline{\includegraphics{fig1.png}}
-\caption{Paveikslėlio aprašas.}
-\label{fig}
-\end{figure*}
+\section{Išvados}
 
 
-\lipsum[2-10]
-
-
-
-
-
-
-Cituojame šaltinį \cite{lecun2015deep}.
+% Cituojame šaltinį \cite{lecun2015deep}.
 
 \bibliographystyle{plain}
 \bibliography{saltiniai}
