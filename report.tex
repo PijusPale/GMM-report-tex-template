@@ -51,8 +51,8 @@ pijus.kizerskis@mif.stud.vu.lt}
 \maketitle
 
 \begin{abstract}
-Projektinio darbo metu tyrėme irlyginome internete paplitusių populiarių modelių
-galimybes ir tikslumą sprendžiant matematinius uždavinius ir lyginome rezultatus su
+Projektinio darbo metu tyrėme ir lyginome internete paplitusių populiarių modelių
+galimybes ir tikslumą sprendžiant matematinius uždavinius bei lyginome rezultatus su
 TP-Transformer tipo modeliu, kuris buvo specialiai aptreniruotas su DeepMind kūrėjų
 „Mathematics-Dataset“ duomenų rinkiniu.
 \end{abstract}
@@ -86,8 +86,21 @@ f & = f_1(f_2(x))
 % Taikytas modelis ~\eqref{eq:lygtis2}.
 
 
-\section{Transformer ir TP-Transformer}
-Aprašote naudojamus duomenis.
+\section{transformer}
+
+\subsection{Veikimas}
+Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM (angl. \textit{Long Short-Term Memory}) aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas "prisiminti" visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
+
+\centerline{\includegraphics{transformer.png}}
+
+\subsection{Moduliai}
+Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga (1 pav.?), tačiau ją galima išskirti į dvi pagrindines dalis:
+\begin{itemize}
+  \item \textbf{Koduotuvas} (angl. \textit{Encoder}) yra atsakingas už įeities duomenų susistemizavimą bei užkodavimą. Tai modeliui padeda suvienodinti gaunamus duomenis bei juos paruošti kitam transformerio moduliui - dekoderiui.
+  \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbumą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
+\end{itemize}
+\subsection{Dėmesys}
+Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl. \textit{self-attention}). Būtent dėl šios savybės transfomeris geriau gali perprasti tekstą. Susifokusavimas figūruoja tiek koduotuvo, tiek dekoderio moduliuose padėdamas išgauti "paslėptas" būsenas bei apskaičiuoti kiekvieno įvesto žodžio svarbumą. 
 
 \subsection{Equations}
 
@@ -120,7 +133,7 @@ a & b & c &  d \\
 
 \section{Naudojami Apmokyti Modeliai}
 Lyginti su TP-Transformer pasirinkome 5 iš anksto apmokytus klausimų-atsakymų modelius: \textbf{
-iAsk.Ai}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
+iAsk.Ai, DeepAI, Bing AI}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
 specialiai pritaikytų matematikos uždaviniams spręsti.
 
 \subsection{ischlag/TP-Transformer}
@@ -138,11 +151,15 @@ patikimiausiais ir autoritetiškiausiais literatūros bei interneto šaltiniais,
 kas suteikia iAsk AI galimybę atsakyti į klausimus objektyviai,
 faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT.
 
+\subsection{Bing AI}
+BingAI - Microsoft kompanijos sukurtas dirbtinio intelekto variklis, naudojamas Bing paieškos sistemoje. Šis variklis naudoja tokias technologijas kaip gilųjį, mašininį mokymą ir natūralios kalbos apdorojimą, siekiant pagerinti paieškos rezultatus ir suteikti geriausius atsakymus vartotojams. Bing AI - nuolat tobulinamas ir mokomas naujų uždavinių, kad būtų užtikrinta patikima ir tiksli paieška. Taip pat Bing AI taikoma kitose Microsoft produktuose, tokiuose kaip Cortana ir Microsoft 365.
 
+\subsection{DeepAI}
+DeepAI - GPT-2 modeliu paremtas natūralios kalbos modelis. Šio, kaip ir kitų kalbos modelių, architektūroje slepiasi su dideliu kiekiu duomenų apmokytas transformeris.
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
 po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
-Tada visus klausimus užduosime 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiavome
+Tada visus klausimus uždavėme 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiavome
 tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai.
 Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
 \subsection{Algebra}
