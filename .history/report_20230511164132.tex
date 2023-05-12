@@ -62,28 +62,26 @@ TP - Tenzoriaus-Produkto
 \end{IEEEkeywords}
 
 \section{Įvadas}
-\subsection{Pristatote problemą [patikslinti title ir ar reikia subsection]}
-Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis kaip pagrindinis mokslinės pažangos ir civilizacijos vystymosi jėga. Matematikos sprendimai nėra intuityvūs – mes uždavinius sprendžiame taikydami įvairias taisykles, interpretuodami simbolius, taikydami globalias aksiomas ir t.t. Pasauliui sparčiai technologiškai žengiant kartu su skaitmenitizacija ir dirbtinio intelekto įtaka kasdieniniams darbams ir įpročiams, mūsū darbo tikslas ištirti kaip efektyviai skirtingi modeliai ir jų architektūros sprendžia įvairaus lygio ir skirtingų temų matematinius uždavinius.
-
+Pristatote problemą
 
 \section{Duomenų Rinkinys}
 
-\subsection{DeepMind Mathematic Dataset}
+\subsection{Metodas A}
 
-Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Plačiau Žr[V.Tyrimo eiga]. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ir/ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“.
+Pristatote naudojamus metodus
 
-% \begin{equation}
-% \mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
-% % \label{eq:lygtis1}
-% \end{equation}
+\begin{equation}
+\mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
+% \label{eq:lygtis1}
+\end{equation}
 
 % Taikyta nuostolių funkcija ~\eqref{eq:lygtis1}.
 
-% \begin{align}
-% y & = f(x) \nonumber \\
-% f & = f_1(f_2(x))
-% % \label{eq:lygtis2}
-% \end{align}
+\begin{align}
+y & = f(x) \nonumber \\
+f & = f_1(f_2(x))
+% \label{eq:lygtis2}
+\end{align}
 
 % Taikytas modelis ~\eqref{eq:lygtis2}.
 
@@ -93,7 +91,7 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 \subsection{Veikimas}
 Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM (angl. \textit{Long Short-Term Memory}) aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas "prisiminti" visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
 
-\centerline{\includegraphics[scale=0.5]{transformer.png}}
+\centerline{\includegraphics{transformer.png}}
 
 \subsection{Moduliai}
 Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga (1 pav.?), tačiau ją galima išskirti į dvi pagrindines dalis:
@@ -119,7 +117,7 @@ Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
-a & b & c & sd \\
+a & b & c &  d \\
 \hline
 \end{tabular}
 \label{tab1}
@@ -135,7 +133,7 @@ a & b & c & sd \\
 
 \section{Naudojami Apmokyti Modeliai}
 Lyginti su TP-Transformer pasirinkome 5 iš anksto apmokytus klausimų-atsakymų modelius: \textbf{
-iAsk.Ai, DeepAI, Bing AI, CHAT GPT-4}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
+iAsk.Ai, DeepAI, Bing AI}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
 specialiai pritaikytų matematikos uždaviniams spręsti.
 
 \subsection{ischlag/TP-Transformer}
@@ -158,9 +156,6 @@ BingAI - Microsoft kompanijos sukurtas dirbtinio intelekto variklis, naudojamas 
 
 \subsection{DeepAI}
 DeepAI - GPT-2 modeliu paremtas natūralios kalbos modelis. Šio, kaip ir kitų kalbos modelių, architektūroje slepiasi su dideliu kiekiu duomenų apmokytas transformeris.
-
-\subsection{ChatGPT-4}
-ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dekoderį. Transformer architektūra turi koduotuvą ir dekoderį, tačiau GPT naudoja tik autoregresine formos dekoderį, tai reiškia, kad jis yra optimizuotas tiksliai numatyti sekantį žodį sekoje. ChatGPT išskirtumas – duomenų rinkinio masyvumas. Jo duomenų rinkinys sudaro šimtai gigabaitų teksto.
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
 po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
