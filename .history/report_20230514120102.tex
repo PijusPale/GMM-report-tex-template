@@ -66,7 +66,7 @@ TP - Tenzoriaus-Produkto
 Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis kaip pagrindinis mokslinės pažangos ir civilizacijos vystymosi jėga. Matematikos sprendimai nėra intuityvūs – mes uždavinius sprendžiame taikydami įvairias taisykles, interpretuodami simbolius, taikydami globalias aksiomas ir t.t. Pasauliui sparčiai technologiškai žengiant kartu su skaitmenitizacija ir dirbtinio intelekto įtaka kasdieniniams darbams ir įpročiams, mūsū darbo tikslas ištirti kaip efektyviai skirtingi modeliai ir jų architektūros sprendžia įvairaus lygio ir skirtingų temų matematinius uždavinius.
 
 
-\section{Duomenų Rinkinys „Mathematics-Dataset“}
+\section{Duomenų Rinkinys}
 
 \subsection{DeepMind Mathematic Dataset}
 
@@ -93,15 +93,10 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 \subsection{Veikimas}
 Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM (angl. \textit{Long Short-Term Memory}) aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas "prisiminti" visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{transformer.png}
-    \caption{Transformerio architektūra}
-    \label{pav:1}
-\end{figure}
+\centerline{\includegraphics[scale=0.5]{transformer.png}}
 
 \subsection{Moduliai}
-Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „~\ref{pav:1} pav.“, tačiau ją galima išskirti į dvi pagrindines dalis:
+Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga (1 pav.?), tačiau ją galima išskirti į dvi pagrindines dalis:
 \begin{itemize}
   \item \textbf{Koduotuvas} (angl. \textit{Encoder}) yra atsakingas už įeities duomenų susistemizavimą bei užkodavimą. Tai modeliui padeda suvienodinti gaunamus duomenis bei juos paruošti kitam transformerio moduliui - dekoderiui.
   \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbumą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
@@ -109,27 +104,27 @@ Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „~\ref{p
 \subsection{Dėmesys}
 Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl. \textit{self-attention}). Būtent dėl šios savybės transfomeris geriau gali perprasti tekstą. Susifokusavimas figūruoja tiek koduotuvo, tiek dekoderio moduliuose padėdamas išgauti "paslėptas" būsenas bei apskaičiuoti kiekvieno įvesto žodžio svarbumą. 
 
-% \subsection{Equations}
+\subsection{Equations}
 
 
 
-% \subsection{Paveikslėliai ir lentelės}
+\subsection{Paveikslėliai ir lentelės}
 
 % Paveikslėlį cituojame ``~\ref{fig} pav.''.
 
 % Paveikslėlį cituojame ``~\ref{tab1} lentelė''.
 
-% \begin{table}[htbp]
-% \caption{Lentelės aprašas}
-% \begin{center}
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% a & b & c & sd \\
-% \hline
-% \end{tabular}
-% \label{tab1}
-% \end{center}
-% \end{table}
+\begin{table}[htbp]
+\caption{Lentelės aprašas}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+a & b & c & sd \\
+\hline
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
 
 % \begin{figure}[!h] % įterpti čia
 % \centerline{\includegraphics{fig1.png}}
@@ -140,7 +135,7 @@ Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl
 
 \section{Naudojami Apmokyti Modeliai}
 Lyginti su TP-Transformer pasirinkome 5 iš anksto apmokytus klausimų-atsakymų modelius: \textbf{
-iAsk.Ai, DeepAI, Bing AI, CHAT GPT-4}. Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
+iAsk.Ai, DeepAI, Bing AI, CHAT GPT-4}, .... Šių modelių tikslumą matematikos uždavinių sprendimui lyginsime su \textbf{ischlag/TP-Transformer} modeliu,
 specialiai pritaikytų matematikos uždaviniams spręsti.
 
 \subsection{ischlag/TP-Transformer}
@@ -151,7 +146,7 @@ pagerinti modelio tikslumą bei atpažinamumą. Mūsų pasirinkta iš anksto iš
 versija buvo treniruojama su 1.7 milijono duomenų.
 
 \subsection{iAsk.Ai}
-Šis kalbos variklis naudoja panašias technologijas, kaip ir ChatGPT variklis, tačiau
+Šis kalbos variklis naudoja panašias technologijas, kaip ir \textbf{ChatGPT} variklis, tačiau
 papildomas dėmesys yra skiriamas optimizuoti natūralios kalbos aprodorojimo modelį. iAsk AI taip pat susideda iš specialiai pritaikyto,
 didelio masto Transformerio kalbos modelio. Šis modelis buvo išskirtinai mokomas remiantis
 patikimiausiais ir autoritetiškiausiais literatūros bei interneto šaltiniais,
@@ -169,13 +164,8 @@ ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dek
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
 po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
-Tada visus klausimus užduosime 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiuosime
-tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai. \par
-Toliau, padarėme kitą duomenų rinkinį iš 56 matematinių klausimų tokiu pačiu formatu ir iš tokių pačių temų,
-tačiau šie klausimai jau nėra iš „Mathematics-Dataset“ duomenų rinkinio, o tai yra
-atsitiktiniai klausimai. Šiems klausimams apsiskaičiavome atsakymus ir šiuos klausimus taip pat paduosime
-visiems 6 modeliams ir žiūrėsime, kaip skirsis atsakymų tikslumas. Ypač įdomu turėtų būti stebėti
-ischlag/TP-Transformer modelio tikslumą ant duomenų, kurių nebuvo jo treniruojamoje duomenų aibėje. \par
+Tada visus klausimus uždavėme 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiavome
+tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai.
 Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
 \subsection{Algebra}
 \begin{itemize}
@@ -209,9 +199,7 @@ Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
 \end{itemize}
 \subsection{Daugianariai}
 \begin{itemize}
-    \item Klausimas: Simplify ((y/y**(1/4)*y)**(3/47)*
-    (y*y*y*y**(4/7)*y*y)/y**5)/(y/((y/(y*y/y**(-2/3)))/y*y*y)*
-    (y*y/(y/(y**2/y)))/y*y**7/y**(4/3)) assuming y is positive.
+    \item Klausimas: Simplify ((y/y**(1/4)*y)**(3/47)*(y*y*y*y**(4/7)*y*y)/y**5)/(y/((y/(y*y/y**(-2/3)))/y*y*y)*(y*y/(y/(y**2/y)))/y*y**7/y**(4/3)) assuming y is positive.
     \item Atsakymas: y**(-30203/3948)
 \end{itemize}
 \subsection{Tikimybės}
@@ -227,55 +215,6 @@ nesupaprastintą trupmeną, nors rezultatas yra toks pat, atsakymas buvo užskai
 Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skaičių iš visų klausimų skaičiaus.
 
 \section{Rezultatai}
-Sudarėme dvi lenteles rezultatų analizėms: „~\ref{lentele:1} lentelė“ parodo, kiek klausimų iš 112 pateiktų
-teisingai atspėjo modeliai iš „Mathematics-Dataset“ duomenų rinkinio. „~\ref{lentele:2} lentelė“  atvaizduoja,
-kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
-
-\begin{table}[h!]
-    \centering
-    \caption{Klausimai iš „Mathematics-Dataset“.}
-    \label{lentele:1}
-    \begin{tabular}{|c c c|} 
-     \hline
-     Modelis & Teisingi atsakymai & Tikslumas \% \\ [0.5ex] 
-     \hline\hline
-     ischlag/TP-Transformer & 92 & 82.14 \\ 
-     \hline
-     iAsk.Ai & 41 & 36.61 \\
-     \hline
-     input & 778 & 7507 \\
-     \hline
-     input &  18744 & 7560 \\
-     \hline
-     input & 788 & 6344 \\
-     \hline
-     intput & 788 & 6344 \\
-     \hline
-    \end{tabular}
-    \end{table}
-
-\begin{table}[h!]
-        \centering
-        \caption{Atsitiktiniai Klausimai}
-        \label{lentele:2}
-        \begin{tabular}{|c c c|} 
-        \hline
-        Modelis & Teisingi atsakymai & Tikslumas \% \\ [0.5ex] 
-        \hline\hline
-        ischlag/TP-Transformer & 20 & 36.71 \\ 
-        \hline
-        iAsk.Ai & 35 & 62.5 \\
-        \hline
-        input & 778 & 7507 \\
-        \hline
-        input &  18744 & 7560 \\
-        \hline
-        input & 788 & 6344 \\
-        \hline
-        intput & 788 & 6344 \\
-        \hline
-    \end{tabular}
-    \end{table}
 
 \section{Išvados}
 
