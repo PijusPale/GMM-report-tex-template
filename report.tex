@@ -61,16 +61,15 @@ TP-Transformer tipo modeliu, kuris buvo specialiai aptreniruotas su DeepMind kū
 TP - Tenzoriaus-Produkto
 \end{IEEEkeywords}
 
+
 \section{Įvadas}
-\subsection{Pristatote problemą [patikslinti title ir ar reikia subsection]}
-Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis kaip pagrindinis mokslinės pažangos ir civilizacijos vystymosi jėga. Matematikos sprendimai nėra intuityvūs – mes uždavinius sprendžiame taikydami įvairias taisykles, interpretuodami simbolius, taikydami globalias aksiomas ir t.t. Pasauliui sparčiai technologiškai žengiant kartu su skaitmenitizacija ir dirbtinio intelekto įtaka kasdieniniams darbams ir įpročiams, mūsū darbo tikslas ištirti kaip efektyviai skirtingi modeliai ir jų architektūros sprendžia įvairaus lygio ir skirtingų temų matematinius uždavinius.
+Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis kaip pagrindinis mokslinės pažangos ir civilizacijos vystymosi jėga. Matematikos sprendimai nėra intuityvūs – mes uždavinius sprendžiame taikydami įvairias taisykles, interpretuodami simbolius bei taikydami globalias aksiomas. Pasauliui sparčiai technologiškai žengiant kartu su skaitmenitizacija ir dirbtinio intelekto įtaka kasdieniniams darbams ir įpročiams, mūsų darbo tikslas ištirti kaip efektyviai skirtingi modeliai ir jų architektūros sprendžia įvairaus lygio ir skirtingų temų matematinius uždavinius.
 
 
 \section{Duomenų Rinkinys „Mathematics-Dataset“}
 
-\subsection{DeepMind Mathematic Dataset}
 
-Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ir/ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti neuroinių tinklų modelių matematinio samprotavimo galimybėms. Plačiau žr. "Analysing mathematical reasoning of neural models"\cite{deeplab}. Straipsnyje lygino LSTM, RMC ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
+Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti bei pagerinti neuroninių tinklų modelių matematinio samprotavimo galimybes. Plačiau žr. „Analysing mathematical reasoning of neural models„~\cite{deeplab}. Straipsnyje lygino LSTM (angl. \textit{Long Short-Term Memory}), RMC (angl. \textit{Relational Memory Core}) ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
 
 % \begin{equation}
 % \mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
@@ -91,11 +90,11 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 \section{transformer}
 
 \subsection{Veikimas}
-Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM (angl. \textit{Long Short-Term Memory}) aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas "prisiminti" visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
+Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{transformer.png}
+    \includegraphics[scale=0.65]{transformer.png}
     \caption{Transformerio architektūra}
     \label{pav:1}
 \end{figure}
@@ -107,7 +106,7 @@ Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „~\ref{p
   \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbumą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
 \end{itemize}
 \subsection{Dėmesys}
-Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl. \textit{self-attention}). Būtent dėl šios savybės transfomeris geriau gali perprasti tekstą. Susifokusavimas figūruoja tiek koduotuvo, tiek dekoderio moduliuose padėdamas išgauti "paslėptas" būsenas bei apskaičiuoti kiekvieno įvesto žodžio svarbumą. 
+Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl. \textit{self-attention}). Būtent dėl šios savybės transfomeris geriau gali perprasti tekstą. Susifokusavimas figūruoja tiek koduotuvo, tiek dekoderio moduliuose padėdamas išgauti „paslėptas“ būsenas bei apskaičiuoti kiekvieno įvesto žodžio svarbumą. 
 
 % \subsection{Equations}
 
@@ -169,7 +168,7 @@ ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dek
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
 po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
-Tada visus klausimus užduosime 5 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiuosime
+Tada visus klausimus užduosime 4 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiuosime
 tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai. \par
 Toliau, padarėme kitą duomenų rinkinį iš 56 matematinių klausimų tokiu pačiu formatu ir iš tokių pačių temų,
 tačiau šie klausimai jau nėra iš „Mathematics-Dataset“ duomenų rinkinio, o tai yra
@@ -221,9 +220,9 @@ Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
 \end{itemize}
 
 Modelio spėjimai bus klasifikuojami kaip binariainiai: arba modelis atspėjo atsakymą, arba ne.
-Atsakymas bus laikomas teisingu tik tuo atveju, jei buvo grąžintas lygiai toks pat, kaip ir buvo tikimasi atsakyme.
-Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo sveikasis skaičius, bet modelis grąžino
-nesupaprastintą trupmeną, nors rezultatas yra toks pat, atsakymas buvo užskaitytas kaip neteisingas.
+Atsakymas bus laikomas teisingu jei atsakymo reikškmė yra tokia pati, nepriklausomai nuo atsakymo duomenų formato.
+Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo 1.5, bet modelis grąžino
+3/2, atsakymas buvo užskaitytas kaip teisingas.
 Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skaičių iš visų klausimų skaičiaus.
 
 \section{Rezultatai}
@@ -241,15 +240,13 @@ kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tok
      \hline\hline
      ischlag/TP-Transformer & 92 & 82.14 \\ 
      \hline
+     Bing & 42 & 37.5 \\
+     \hline
      iAsk.Ai & 41 & 36.61 \\
      \hline
-     input & 778 & 7507 \\
+     Chat GPT-4 & 30 & 26.78 \\
      \hline
-     input &  18744 & 7560 \\
-     \hline
-     input & 788 & 6344 \\
-     \hline
-     intput & 788 & 6344 \\
+     DeepAI & 27 & 24.11 \\
      \hline
     \end{tabular}
     \end{table}
@@ -262,17 +259,15 @@ kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tok
         \hline
         Modelis & Teisingi atsakymai & Tikslumas \% \\ [0.5ex] 
         \hline\hline
-        ischlag/TP-Transformer & 20 & 36.71 \\ 
-        \hline
         iAsk.Ai & 35 & 62.5 \\
         \hline
-        input & 778 & 7507 \\
+        Bing & 29 & 51.79 \\
         \hline
-        input &  18744 & 7560 \\
+        DeepAI & 26 & 46.43 \\
         \hline
-        input & 788 & 6344 \\
+        ischlag/TP-Transformer & 20 & 36.71 \\
         \hline
-        intput & 788 & 6344 \\
+        Chat GPT-4 & 18 & 32.14 \\
         \hline
     \end{tabular}
     \end{table}
