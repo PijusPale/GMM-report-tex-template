@@ -69,7 +69,7 @@ Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis 
 \section{Duomenų Rinkinys „Mathematics-Dataset“}
 
 
-Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti bei pagerinti neuroninių tinklų modelių matematinio samprotavimo galimybes. Plačiau žr. „Analysing mathematical reasoning of neural models„~\cite{deeplab}. Straipsnyje lygino LSTM (angl. \textit{Long Short-Term Memory}), RMC (angl. \textit{Relational Memory Core}) ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
+Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti bei pagerinti neuroninių tinklų modelių matematinio samprotavimo galimybes. Plačiau žr. „Analysing mathematical reasoning of neural models„\cite{deeplab}. Straipsnyje lygino LSTM (angl. \textit{Long Short-Term Memory}), RMC (angl. \textit{Relational Memory Core}) ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
 
 % \begin{equation}
 % \mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
@@ -87,7 +87,7 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 % Taikytas modelis ~\eqref{eq:lygtis2}.
 
 
-\section{transformer}
+\section{Transformeris}
 
 \subsection{Veikimas}
 Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
@@ -100,7 +100,7 @@ Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transfor
 \end{figure}
 
 \subsection{Moduliai}
-Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „~\ref{pav:1} pav.“, tačiau ją galima išskirti į dvi pagrindines dalis:
+Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „\ref{pav:1} pav.“, tačiau ją galima išskirti į dvi pagrindines dalis:
 \begin{itemize}
   \item \textbf{Koduotuvas} (angl. \textit{Encoder}) yra atsakingas už įeities duomenų susistemizavimą bei užkodavimą. Tai modeliui padeda suvienodinti gaunamus duomenis bei juos paruošti kitam transformerio moduliui - dekoderiui.
   \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbumą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
@@ -226,10 +226,6 @@ Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo 1.5, b
 Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skaičių iš visų klausimų skaičiaus.
 
 \section{Rezultatai}
-Sudarėme dvi lenteles rezultatų analizėms: „~\ref{lentele:1} lentelė“ parodo, kiek klausimų iš 112 pateiktų
-teisingai atspėjo modeliai iš „Mathematics-Dataset“ duomenų rinkinio. „~\ref{lentele:2} lentelė“  atvaizduoja,
-kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
-
 \begin{table}[h!]
     \centering
     \caption{Klausimai iš „Mathematics-Dataset“.}
@@ -271,15 +267,38 @@ kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tok
         \hline
     \end{tabular}
     \end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{lentele.png}
+    \caption{Modelių tikslumai kiekvienai matematinei šakai}
+    \label{pav:2}
+\end{figure}
+    
+Sudarėme dvi lenteles bei diagramą rezultatų analizėms. „\ref{lentele:1} lentelė“ parodo, kiek klausimų iš 112 pateiktų
+teisingai atspėjo modeliai iš „Mathematics-Dataset“ duomenų rinkinio. „\ref{lentele:2} lentelė“  atvaizduoja,
+kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
+
+
+
+Toliau, kiekvienai matematikos šakai: Algebra, Aritmetika, Matematinė analizė, Palyginimas, Konvertavimas, Skaičių operacijos, Daugianariai, Tikimybės, lyginome modelių tikslumą panaudodami klausimus iš „Mathematics-Dataset“. Algebros šaką sudarė 16 klausimų, Aritmetikos - 18, Matematinės analizės - 4, Palyginimo - 16, Konvertavimo - 4, Skaičių operacijų - 34, Daugianarių - 16, Tikimybių - 4. Rezultatus galime matyti „\ref{pav:2} pav.“
+
 
 \section{Išvados}
 \begin{itemize}
-    \item Geriausias modelis „Mathematics-Dataset“ duomenų rinkiniui yra ischlag/TP-Transformer su 82.15% tikslumu
-    \item Geriausiai pasirodęs modelis su atsitiktiniais klausimais yra iAsk.Ai surinkęs 62.5%
+    \item Geriausias modelis „Mathematics-Dataset“ duomenų rinkiniui yra ischlag/TP-Transformer su 82.15\% tikslumu.
+    \item Modelis ischlag/TP-Transformer geriausiai sprendžia uždavinius visoms matematinėms šakoms.
+    \item Iš „\ref{pav:2} pav.“ galime pastebėti, kad blogiausiai visi modeliai sprenžia tikimybių uždavinius. Tai reiškia, kad treniruojant modelius spręsti matematinius uždavinius daugiau dėmesio turėtų būti skirta tikimybių uždaviniams.
+    \item Geriausiai pasirodęs modelis su atsitiktiniais klausimais yra iAsk.Ai surinkęs 62.5\%.
     \item Galime matyti, kad atsitiktinius klausimus tiksliausiai sprendė iAsk.Ai modelis todėl, nes jo veikimo principas yra paremtas google paieškos tinkamiausiai aplikacijai spręsti užduotą uždavinį. Tą geriausiai iliustruoja, kad didžiąjai daliai klausimų iAsk.Ai naudojo WolframAlpha[šaltinis] matematikos variklį.
     \item Mažiausią tikslumą su atsitiktiniais klausimais surinko Chat GPT-4, nes, mūsų manymu, šis modelis yra labiau pritaikytas teksto generavimui, nei specifinių užduočių sprendimui.
     \item Iš ischlag/TP-Transformer tikslumo atsitiktiniams klausimams galime pastebėti, kad šis modelis gali gerai spręsti tik tuos klausimus kurie buvo „Mathematics-Dataset“ duomenų rinkinyje, nes būtent ant šių duomenų jis buvo ištreniruotas.
     \item Nesvarbu koks geras ir su kiek daug duomenų bus apmokytas modelis (pavyzdžiui ChatGPT-4), jeigu jis nebuvo treniruotas su specifinės srities duomenimis, jis gerai toje srityje nepasirodys.
+\end{itemize}
+\section{Rezultatų Taikymo ir Tobulinimo Galimybės}
+\begin{itemize}
+    \item Pabandyti papildomai su „Mathematics-Dataset“ ištreniruoti (angl. \textit{fine-tune}) jau egzistuojančius transformerių modelius ir palyginti, kaip šis duomenų rinkinys pagerina matematinių uždavinių sprendimą.
+    \item Palyginti LSTM, Scaling-Transformer bei Graphic Logic Reasoner modelių tikslumą sprendžiant matematinius uždavinius (ĮDĖTI NUORODĄ Į https://paperswithcode.com/sota/question-answering-on-mathematics-dataset).
+    \item Pasirinkti kelis į matematiką orientuotus duomenų rinkinius, ne tik „Mathematics-Dataset“, su jais papildomai ištreniruoti tą patį pasirinktą modelį ir palyginti kaip skirtingai jie pagerina uždavinių sprendimą. 
 \end{itemize}
 
 \bibliographystyle{plain}
