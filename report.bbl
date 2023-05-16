@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{deepai}
+Deepai.
+\newblock \url{https://www.deep.ai}, 2019.
+
+\bibitem{iaskai}
+{AI Search Inc.}
+\newblock \url{https://www.aisearchinc.com}, 2022.
+
+\bibitem{deeplab}
+Felix~Hill David~Saxton, Edward~Grefenstette and Pushmeet Kohli.
+\newblock Analysing mathematical reasoning abilities of neural models.
+\newblock {\em ICLR 2019}, 2019.
+
+\bibitem{bing}
+Yusuf Mehdi.
+\newblock Announcing the next wave of ai innovation with microsoft bing and edge.
+\newblock Blog post, May 2023.
+
+\bibitem{chatgpt}
+OpenAI.
+\newblock Chatgpt: Large-scale language models for conversational ai.
+\newblock {\em OpenAI Blog}, 2023.
+
+\bibitem{dataset}
+David Saxton, Edward Grefenstette, Felix Hill, and Pushmeet Kohli.
+\newblock Mathematics dataset.
+\newblock Dataset, 2020.
+
+\bibitem{tptransformer}
+Imanol Schlag, Paul Smolensky, Roland Fernandez, Nebojsa Jojic, J{\"u}rgen Schmidhuber, and Jianfeng Gao.
+\newblock Enhancing the transformer with explicit relational encoding for math problem solving.
+\newblock {\em arXiv preprint arXiv:1910.06611}, 2019.
+
+\end{thebibliography}

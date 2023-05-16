@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report.aux
+The style file: plain.bst
+Database file #1: saltiniai.bib
+Warning--to sort, need author or key in iaskai
+Warning--to sort, need author or key in deepai
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            527 strings with 4770 characters,
+and the built_in function-call counts, 1670 in all, are:
+= -- 153
+> -- 85
+< -- 0
++ -- 35
+- -- 28
+* -- 90
+:= -- 286
+add.period$ -- 19
+call.type$ -- 7
+change.case$ -- 35
+chr.to.int$ -- 0
+cite$ -- 9
+duplicate$ -- 58
+empty$ -- 142
+format.name$ -- 28
+if$ -- 349
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 3
+newline$ -- 36
+num.names$ -- 10
+pop$ -- 53
+preamble$ -- 1
+purify$ -- 28
+quote$ -- 0
+skip$ -- 50
+stack$ -- 0
+substring$ -- 35
+swap$ -- 7
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 2
+while$ -- 10
+width$ -- 8
+write$ -- 68
+(There were 2 warnings)

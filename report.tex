@@ -4,6 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[lithuanian]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\usepackage{hyperref}
 
 
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
@@ -53,7 +55,7 @@ pijus.kizerskis@mif.stud.vu.lt}
 \begin{abstract}
 Projektinio darbo metu tyrėme ir lyginome internete paplitusių populiarių modelių
 galimybes ir tikslumą sprendžiant matematinius uždavinius bei lyginome rezultatus su
-TP-Transformer tipo modeliu, kuris buvo specialiai aptreniruotas su DeepMind kūrėjų
+TP-Transformer \cite{tptransformer} tipo modeliu, kuris buvo specialiai aptreniruotas su DeepMind kūrėjų
 „Mathematics-Dataset“ duomenų rinkiniu.
 \end{abstract}
 
@@ -66,10 +68,10 @@ TP - Tenzoriaus-Produkto
 Matematinis samprotavimas – esminis žmogaus intelekto gebėjimas, veikiantis kaip pagrindinis mokslinės pažangos ir civilizacijos vystymosi jėga. Matematikos sprendimai nėra intuityvūs – mes uždavinius sprendžiame taikydami įvairias taisykles, interpretuodami simbolius bei taikydami globalias aksiomas. Pasauliui sparčiai technologiškai žengiant kartu su skaitmenitizacija ir dirbtinio intelekto įtaka kasdieniniams darbams ir įpročiams, mūsų darbo tikslas ištirti kaip efektyviai skirtingi modeliai ir jų architektūros sprendžia įvairaus lygio ir skirtingų temų matematinius uždavinius.
 
 
-\section{Duomenų Rinkinys „Mathematics-Dataset“}
+\section{Duomenų Rinkinys „Mathematics-Dataset“ \cite{dataset}}
 
 
-Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti bei pagerinti neuroninių tinklų modelių matematinio samprotavimo galimybes. Plačiau žr. „Analysing mathematical reasoning of neural models„\cite{deeplab}. Straipsnyje lygino LSTM (angl. \textit{Long Short-Term Memory}), RMC (angl. \textit{Relational Memory Core}) ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
+Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintetiškai sugeneruotų matematinių uždavinių iš skirtingų temų. Duomenų rinkinyje uždaviniai yra tik tekstiniai, neprašoma nupiešti grafikų ar medžių, nes tokius duomenis būtų daug sudėtingiau validuoti ir modeliai taptų kur kas sudėtingesni. Uždavinių generatorius sukurtas akcentuojant, kad uždaviniai būtų kuo aktualesni ir atspindėtų kasdienio gyvenimo „matematikos egzaminą“. Šis duomenų rinkinys buvo sukurtas ištirti bei pagerinti neuroninių tinklų modelių matematinio samprotavimo galimybes. Plačiau žr. „Analysing mathematical reasoning of neural models„\cite{deeplab}. Straipsnyje lygino LSTM (angl. \textit{Long Short-Term Memory}), RMC (angl. \textit{Relational Memory Core}) ir Transformer tipų modelių variacijas. Geriausią tikslumą parodė TP-Transformer \cite{tptransformer} modelis kurį ir pasirinkome, kaip pagrindinį tyrimo objektą.
 
 % \begin{equation}
 % \mathcal{L}({\bf X}, {\bf Y}) = \frac{1}{w \cdot h} \sum_{i=1}^h \sum_{j=1}^w (X_{i, j} - Y_{i, j})^2
@@ -90,7 +92,7 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 \section{Transformeris}
 
 \subsection{Veikimas}
-Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
+Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. \cite{deeplab} Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
 
 \begin{figure}
     \centering
@@ -144,31 +146,36 @@ specialiai pritaikytų matematikos uždaviniams spręsti.
 
 \subsection{ischlag/TP-Transformer}
 Šio modelio sukūrimui į standartinį transformerio tipo modelį buvo integruota Tenzoriaus-Produkto
-reprezentacija, tokiu būdu pagerinant išskirtinius sąryšius tarp transformerio vidinių struktūrų. Modelis buvo apmokytas
+reprezentacija, tokiu būdu pagerinant išskirtinius sąryšius tarp transformerio vidinių struktūrų. \cite{tptransformer} Modelis buvo apmokytas
 naudojant „Mathematics-Dataset“, kuris buvo išskaidytas į 56 skirtingas matematikos šakas, siekiant
 pagerinti modelio tikslumą bei atpažinamumą. Mūsų pasirinkta iš anksto ištreniruota modelio 
-versija buvo treniruojama su 1.7 milijono duomenų.
+versija buvo treniruojama su 1.7 milijono duomenų. Modelis yra patalpintas 
+\href{https://colab.research.google.com/drive/1Zi9FOwcO_i-4FDQQGgMMfcZxZISpJNMT}{Google Colab} platformoje.
 
 \subsection{iAsk.Ai}
 Šis kalbos variklis naudoja panašias technologijas, kaip ir ChatGPT variklis, tačiau
-papildomas dėmesys yra skiriamas optimizuoti natūralios kalbos aprodorojimo modelį. iAsk AI taip pat susideda iš specialiai pritaikyto,
+papildomas dėmesys yra skiriamas optimizuoti natūralios kalbos aprodorojimo modelį. \cite{iaskai} iAsk AI taip pat susideda iš specialiai pritaikyto,
 didelio masto Transformerio kalbos modelio. Šis modelis buvo išskirtinai mokomas remiantis
 patikimiausiais ir autoritetiškiausiais literatūros bei interneto šaltiniais,
 kas suteikia iAsk AI galimybę atsakyti į klausimus objektyviai,
-faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT.
+faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT. Modelis yra pasiekiamas 
+\href{https://iask.ai/}{iAsk.Ai} puslapyje.
 
 \subsection{Bing AI}
-BingAI - Microsoft kompanijos sukurtas dirbtinio intelekto variklis, naudojamas Bing paieškos sistemoje. Šis variklis naudoja tokias technologijas kaip gilųjį, mašininį mokymą ir natūralios kalbos apdorojimą, siekiant pagerinti paieškos rezultatus ir suteikti geriausius atsakymus vartotojams. Bing AI - nuolat tobulinamas ir mokomas naujų uždavinių, kad būtų užtikrinta patikima ir tiksli paieška. Taip pat Bing AI taikoma kitose Microsoft produktuose, tokiuose kaip Cortana ir Microsoft 365.
+BingAI - Microsoft kompanijos sukurtas dirbtinio intelekto variklis, naudojamas Bing paieškos sistemoje. \cite{bing} Šis variklis naudoja tokias technologijas kaip gilųjį, mašininį mokymą ir natūralios kalbos apdorojimą, siekiant pagerinti paieškos rezultatus ir suteikti geriausius atsakymus vartotojams. Bing AI - nuolat tobulinamas ir mokomas naujų uždavinių, kad būtų užtikrinta patikima ir tiksli paieška. Taip pat Bing AI taikoma kitose Microsoft produktuose, tokiuose kaip Cortana ir Microsoft 365. Modelis yra pasiekiamas 
+\href{https://www.bing.com/?/ai/}{Bing Ai} paieškos variklyje.
 
 \subsection{DeepAI}
-DeepAI - GPT-2 modeliu paremtas natūralios kalbos modelis. Šio, kaip ir kitų kalbos modelių, architektūroje slepiasi su dideliu kiekiu duomenų apmokytas transformeris.
+DeepAI - GPT-2 modeliu paremtas natūralios kalbos modelis. \cite{deepai} Šio, kaip ir kitų kalbos modelių, architektūroje slepiasi su dideliu kiekiu duomenų apmokytas transformeris. Modelis yra pasiekiamas 
+\href{https://deep.ai/}{Deep.Ai} puslapyje.
 
 \subsection{ChatGPT-4}
-ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dekoderį. Transformer architektūra turi koduotuvą ir dekoderį, tačiau GPT naudoja tik autoregresine formos dekoderį, tai reiškia, kad jis yra optimizuotas tiksliai numatyti sekantį žodį sekoje. ChatGPT išskirtumas – duomenų rinkinio masyvumas. Jo duomenų rinkinys sudaro šimtai gigabaitų teksto.
+ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dekoderį.\cite{chatgpt} Transformer architektūra turi koduotuvą ir dekoderį, tačiau GPT naudoja tik autoregresine formos dekoderį, tai reiškia, kad jis yra optimizuotas tiksliai numatyti sekantį žodį sekoje. ChatGPT išskirtumas – duomenų rinkinio masyvumas. Jo duomenų rinkinys sudaro šimtai gigabaitų teksto. Modelis yra pasiekiamas 
+\href{https://chat.openai.lt}{Open Ai} puslapyje.
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
-po dvi klausimų-atsakymų poras. Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
-Tada visus klausimus užduosime 4 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer modeliui ir skaičiuosime
+po dvi klausimų-atsakymų poras. \cite{dataset} Iš viso gavosi duomenų rinkinys, su 112 klausimų ir 112 atsakymų.
+Tada visus klausimus užduosime 4 pasirinktiems klausimų-atsakymų modeliams bei ischlag/TP-Transformer \cite{tptransformer} modeliui ir skaičiuosime
 tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai. \par
 Toliau, padarėme kitą duomenų rinkinį iš 56 matematinių klausimų tokiu pačiu formatu ir iš tokių pačių temų,
 tačiau šie klausimai jau nėra iš „Mathematics-Dataset“ duomenų rinkinio, o tai yra
@@ -223,7 +230,36 @@ Modelio spėjimai bus klasifikuojami kaip binariainiai: arba modelis atspėjo at
 Atsakymas bus laikomas teisingu jei atsakymo reikškmė yra tokia pati, nepriklausomai nuo atsakymo duomenų formato.
 Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo 1.5, bet modelis grąžino
 3/2, atsakymas buvo užskaitytas kaip teisingas.
-Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skaičių iš visų klausimų skaičiaus.
+Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} pav.]. Atsakymų rinkimo pavyzdinę lentelę galite matyti I-oje lentelėje.
+\begin{figure}[ht]
+\centering
+\begin{equation}
+\text{Tikslumas} = \frac{\text{Teisingi spėjimai}}{\text{Uždavinių skaičius}}
+\end{equation}
+\caption{Tikslumo forumlė}
+\label{fig:tikslumas}
+\end{figure}
+
+
+
+
+
+\begin{table}[h!]
+    \centering
+    \caption{Chat GPT-4 atsakymų lentelė.}
+    \label{lentele:1}
+    \begin{tabular}{|c c c c|} 
+     \hline
+     Klausimas & Tema & Spėjimas & Tiesa  \\ [0.5ex] 
+     \hline\hline
+     Solve 12*s + 5 = 65 for s& Algebra & 5 & 5 \\ 
+     \hline
+    Solve 5*a + 2.5 = 10 for a & Algebra & 3/2 & 1.5 \\ 
+     \hline
+         ... & ... & ... & ... \\ 
+     \hline
+    \end{tabular}
+    \end{table}
 
 \section{Rezultatai}
 \begin{table}[h!]
@@ -275,7 +311,7 @@ Tikslumo metrika bus skaičiuojama padalinant teisingai atspėtų klausimų skai
 \end{figure}
     
 Sudarėme dvi lenteles bei diagramą rezultatų analizėms. „\ref{lentele:1} lentelė“ parodo, kiek klausimų iš 112 pateiktų
-teisingai atspėjo modeliai iš „Mathematics-Dataset“ duomenų rinkinio. „\ref{lentele:2} lentelė“  atvaizduoja,
+teisingai atspėjo modeliai iš „Mathematics-Dataset“ \cite{dataset} duomenų rinkinio. „\ref{lentele:2} lentelė“  atvaizduoja,
 kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
 
 
@@ -297,7 +333,7 @@ Toliau, kiekvienai matematikos šakai: Algebra, Aritmetika, Matematinė analizė
 \section{Rezultatų Taikymo ir Tobulinimo Galimybės}
 \begin{itemize}
     \item Pabandyti papildomai su „Mathematics-Dataset“ ištreniruoti (angl. \textit{fine-tune}) jau egzistuojančius transformerių modelius ir palyginti, kaip šis duomenų rinkinys pagerina matematinių uždavinių sprendimą.
-    \item Palyginti LSTM, Scaling-Transformer bei Graphic Logic Reasoner modelių tikslumą sprendžiant matematinius uždavinius (ĮDĖTI NUORODĄ Į https://paperswithcode.com/sota/question-answering-on-mathematics-dataset).
+    \item Palyginti LSTM, Scaling-Transformer bei Graphic Logic Reasoner modelių tikslumą sprendžiant matematinius uždavinius \cite{dataset}
     \item Pasirinkti kelis į matematiką orientuotus duomenų rinkinius, ne tik „Mathematics-Dataset“, su jais papildomai ištreniruoti tą patį pasirinktą modelį ir palyginti kaip skirtingai jie pagerina uždavinių sprendimą. 
 \end{itemize}
 
