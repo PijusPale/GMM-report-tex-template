@@ -92,7 +92,7 @@ Mūsų pasirinktas duomenų rinkinys yra sudarytas tik iš laisvos formos sintet
 \section{Transformeris}
 
 \subsection{Veikimas}
-Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. \cite{deeplab} Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius bando suprasti teksto esmę.
+Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transformeris. \cite{deeplab} Jis pakeitė LSTM aplenkdamas pastarajį tiek efektyvesniu apmokymu, tiek tikslesniais bei greitesniais atsakymais. LSTM modelis tekstą apdoroja eidamas per kiekvieną žodį iš eilės bandydamas „prisiminti“ visą sakinio esmę. Transformeris apdoroja kiek įmanoma daugiau teksto vienu metu ir, atkreipdamas dėmesį į raktinius žodžius, bando suprasti teksto esmę.
 
 \begin{figure}
     \centering
@@ -105,7 +105,7 @@ Populiariausias bei plačiausiai paplitęs natūralios kalbos modelis - transfor
 Iš pirmo žvilgsnio modelio architektūra gali pasirodyti sudėtinga „\ref{pav:1} pav.“, tačiau ją galima išskirti į dvi pagrindines dalis:
 \begin{itemize}
   \item \textbf{Koduotuvas} (angl. \textit{Encoder}) yra atsakingas už įeities duomenų susistemizavimą bei užkodavimą. Tai modeliui padeda suvienodinti gaunamus duomenis bei juos paruošti kitam transformerio moduliui - dekoderiui.
-  \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbumą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
+  \item \textbf{Dekoderis} (angl. \textit{Decoder}) iš koduotuvo gauna galutinę paslėptą būseną pagal kurią sprendžia kiekvieno žodžio svarbą. Susidėliojęs konteksto vektorių dekoderis atiduoda galutinę išvestį.
 \end{itemize}
 \subsection{Dėmesys}
 Turbūt svarbiausias transformeryje naudojamas sluoksnis - susifokusavimas (angl. \textit{self-attention}). Būtent dėl šios savybės transfomeris geriau gali perprasti tekstą. Susifokusavimas figūruoja tiek koduotuvo, tiek dekoderio moduliuose padėdamas išgauti „paslėptas“ būsenas bei apskaičiuoti kiekvieno įvesto žodžio svarbumą. 
@@ -149,7 +149,7 @@ specialiai pritaikytų matematikos uždaviniams spręsti.
 reprezentacija, tokiu būdu pagerinant išskirtinius sąryšius tarp transformerio vidinių struktūrų. \cite{tptransformer} Modelis buvo apmokytas
 naudojant „Mathematics-Dataset“, kuris buvo išskaidytas į 56 skirtingas matematikos šakas, siekiant
 pagerinti modelio tikslumą bei atpažinamumą. Mūsų pasirinkta iš anksto ištreniruota modelio 
-versija buvo treniruojama su 1.7 milijono duomenų. Modelis yra patalpintas 
+versija buvo treniruojama su 1.7 milijono duomenų. Modelį galima išbandyti 
 \href{https://colab.research.google.com/drive/1Zi9FOwcO_i-4FDQQGgMMfcZxZISpJNMT}{Google Colab} platformoje.
 
 \subsection{iAsk.Ai}
@@ -158,7 +158,9 @@ papildomas dėmesys yra skiriamas optimizuoti natūralios kalbos aprodorojimo mo
 didelio masto Transformerio kalbos modelio. Šis modelis buvo išskirtinai mokomas remiantis
 patikimiausiais ir autoritetiškiausiais literatūros bei interneto šaltiniais,
 kas suteikia iAsk AI galimybę atsakyti į klausimus objektyviai,
-faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT. Modelis yra pasiekiamas 
+faktiškai ir be potencialaus subjektyvumo, kurio galėtų būti ChatGPT. Taip pat yra svarbu paminėti,
+kad gavus užduotį modelis pats sugeneruojas užklausas interneto paieškos
+varikliams bei parenką tinkamiausią aplikaciją užduočiai įgyvendinti. Modelis yra pasiekiamas 
 \href{https://iask.ai/}{iAsk.Ai} puslapyje.
 
 \subsection{Bing AI}
@@ -170,7 +172,7 @@ DeepAI - GPT-2 modeliu paremtas natūralios kalbos modelis. \cite{deepai} Šio, 
 \href{https://deep.ai/}{Deep.Ai} puslapyje.
 
 \subsection{ChatGPT-4}
-ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dekoderį.\cite{chatgpt} Transformer architektūra turi koduotuvą ir dekoderį, tačiau GPT naudoja tik autoregresine formos dekoderį, tai reiškia, kad jis yra optimizuotas tiksliai numatyti sekantį žodį sekoje. ChatGPT išskirtumas – duomenų rinkinio masyvumas. Jo duomenų rinkinys sudaro šimtai gigabaitų teksto. Modelis yra pasiekiamas 
+ChatGPT-4 yra paremtas GPT modeliu, kuris naudoja Transformer architektūros dekoderį.\cite{chatgpt} Transformer architektūra turi koduotuvą ir dekoderį, tačiau GPT naudoja tik autoregresinės formos dekoderį, tai reiškia, kad jis yra optimizuotas tiksliai numatyti sekantį žodį sekoje. ChatGPT išskirtumas – duomenų rinkinio masyvumas. Jo duomenų rinkinys sudaro šimtai gigabaitų teksto. Modelis yra pasiekiamas 
 \href{https://chat.openai.lt}{Open Ai} puslapyje.
 \section{Tyrimo Eiga}
 Iš „Mathematics-Dataset“ duomenų rinkinio 56 matematinių uždavinių kategorijų išsirinkome
@@ -180,7 +182,7 @@ tikslumą - kiek iš užduotų klausimų modeliai sugebėjo atsakyti teisingai. 
 Toliau, padarėme kitą duomenų rinkinį iš 56 matematinių klausimų tokiu pačiu formatu ir iš tokių pačių temų,
 tačiau šie klausimai jau nėra iš „Mathematics-Dataset“ duomenų rinkinio, o tai yra
 atsitiktiniai klausimai. Šiems klausimams apsiskaičiavome atsakymus ir šiuos klausimus taip pat paduosime
-visiems 6 modeliams ir žiūrėsime, kaip skirsis atsakymų tikslumas. Ypač įdomu turėtų būti stebėti
+visiems 5 modeliams ir žiūrėsime, kaip skirsis atsakymų tikslumas. Ypač įdomu turėtų būti stebėti
 ischlag/TP-Transformer modelio tikslumą ant duomenų, kurių nebuvo jo treniruojamoje duomenų aibėje. \par
 Klausimų ir atsakymų pavyzdžiai iš kiekvienos temos:
 \subsection{Algebra}
@@ -230,7 +232,7 @@ Modelio spėjimai bus klasifikuojami kaip binariainiai: arba modelis atspėjo at
 Atsakymas bus laikomas teisingu jei atsakymo reikškmė yra tokia pati, nepriklausomai nuo atsakymo duomenų formato.
 Kaip vienas iš pavyzdžių galėtų būti: jeigu tikėtas atsakymas buvo 1.5, bet modelis grąžino
 3/2, atsakymas buvo užskaitytas kaip teisingas.
-Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} pav.]. Atsakymų rinkimo pavyzdinę lentelę galite matyti I-oje lentelėje.
+Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} pav.]. Atsakymų rinkimo pavyzdinę lentelę galite matyti „\ref{lentele:1} lentelė“.
 \begin{figure}[ht]
 \centering
 \begin{equation}
@@ -239,7 +241,6 @@ Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} 
 \caption{Tikslumo forumlė}
 \label{fig:tikslumas}
 \end{figure}
-
 
 
 
@@ -265,7 +266,7 @@ Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} 
 \begin{table}[h!]
     \centering
     \caption{Klausimai iš „Mathematics-Dataset“.}
-    \label{lentele:1}
+    \label{lentele:2}
     \begin{tabular}{|c c c|} 
      \hline
      Modelis & Teisingi atsakymai & Tikslumas \% \\ [0.5ex] 
@@ -286,7 +287,7 @@ Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} 
 \begin{table}[h!]
         \centering
         \caption{Atsitiktiniai Klausimai}
-        \label{lentele:2}
+        \label{lentele:3}
         \begin{tabular}{|c c c|} 
         \hline
         Modelis & Teisingi atsakymai & Tikslumas \% \\ [0.5ex] 
@@ -310,22 +311,22 @@ Tikslumo metrika bus skaičiuojama pagal tikslumo formulę [\ref{fig:tikslumas} 
     \label{pav:2}
 \end{figure}
     
-Sudarėme dvi lenteles bei diagramą rezultatų analizėms. „\ref{lentele:1} lentelė“ parodo, kiek klausimų iš 112 pateiktų
-teisingai atspėjo modeliai iš „Mathematics-Dataset“ \cite{dataset} duomenų rinkinio. „\ref{lentele:2} lentelė“  atvaizduoja,
-kaip sekėsi tiems patiems modeliams spręsti atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
+Sudarėme dvi lenteles bei diagramą rezultatų analizėms. „\ref{lentele:2} lentelė“ parodo, kiek klausimų iš 112 pateiktų
+teisingai atspėjo modeliai iš „Mathematics-Dataset“ \cite{dataset} duomenų rinkinio. „\ref{lentele:3} lentelė“  atvaizduoja,
+kaip sekėsi tiems patiems modeliams spręsti kitus, atsitiktinius 56 klausimus iš tokių pačių matematinių temų.
 
 
 
-Toliau, kiekvienai matematikos šakai: Algebra, Aritmetika, Matematinė analizė, Palyginimas, Konvertavimas, Skaičių operacijos, Daugianariai, Tikimybės, lyginome modelių tikslumą panaudodami klausimus iš „Mathematics-Dataset“. Algebros šaką sudarė 16 klausimų, Aritmetikos - 18, Matematinės analizės - 4, Palyginimo - 16, Konvertavimo - 4, Skaičių operacijų - 34, Daugianarių - 16, Tikimybių - 4. Rezultatus galime matyti „\ref{pav:2} pav.“
+Toliau, kiekvienai matematikos šakai: Algebra, Aritmetika, Matematinė analizė, Palyginimas, Konvertavimas, Skaičių operacijos, Daugianariai, Tikimybės, lyginome modelių tikslumą panaudodami klausimus iš „Mathematics-Dataset“. Algebros šaką sudarė 16 klausimų, Aritmetikos - 18, Matematinės analizės - 4, Palyginimo - 16, Konvertavimo - 4, Skaičių operacijų - 34, Daugianarių - 16, Tikimybių - 4. Rezultatus, kaip tiksliai modelias sekėsi atspėti klausimus, galime matyti „\ref{pav:2} pav.“
 
 
 \section{Išvados}
 \begin{itemize}
     \item Geriausias modelis „Mathematics-Dataset“ duomenų rinkiniui yra ischlag/TP-Transformer su 82.15\% tikslumu.
-    \item Modelis ischlag/TP-Transformer geriausiai sprendžia uždavinius visoms matematinėms šakoms.
+    \item Modelis ischlag/TP-Transformer geriausiai sprendžia uždavinius visoms matematinėms šakoms iš „Mathematics-Dataset“ duomenų rinkinio.
     \item Iš „\ref{pav:2} pav.“ galime pastebėti, kad blogiausiai visi modeliai sprenžia tikimybių uždavinius. Tai reiškia, kad treniruojant modelius spręsti matematinius uždavinius daugiau dėmesio turėtų būti skirta tikimybių uždaviniams.
     \item Geriausiai pasirodęs modelis su atsitiktiniais klausimais yra iAsk.Ai surinkęs 62.5\%.
-    \item Galime matyti, kad atsitiktinius klausimus tiksliausiai sprendė iAsk.Ai modelis todėl, nes jo veikimo principas yra paremtas google paieškos tinkamiausiai aplikacijai spręsti užduotą uždavinį. Tą geriausiai iliustruoja, kad didžiąjai daliai klausimų iAsk.Ai naudojo WolframAlpha[šaltinis] matematikos variklį.
+    \item Galime matyti, kad atsitiktinius klausimus tiksliausiai sprendė iAsk.Ai modelis todėl, nes jo veikimo principas yra paremtas interneto paieškos tinkamiausiai aplikacijai spręsti užduotą uždavinį. Tą geriausiai iliustruoja, kad didžiąjai daliai klausimų iAsk.Ai naudojo WolframAlpha[šaltinis] matematikos variklį.
     \item Mažiausią tikslumą su atsitiktiniais klausimais surinko Chat GPT-4, nes, mūsų manymu, šis modelis yra labiau pritaikytas teksto generavimui, nei specifinių užduočių sprendimui.
     \item Iš ischlag/TP-Transformer tikslumo atsitiktiniams klausimams galime pastebėti, kad šis modelis gali gerai spręsti tik tuos klausimus kurie buvo „Mathematics-Dataset“ duomenų rinkinyje, nes būtent ant šių duomenų jis buvo ištreniruotas.
     \item Nesvarbu koks geras ir su kiek daug duomenų bus apmokytas modelis (pavyzdžiui ChatGPT-4), jeigu jis nebuvo treniruotas su specifinės srities duomenimis, jis gerai toje srityje nepasirodys.

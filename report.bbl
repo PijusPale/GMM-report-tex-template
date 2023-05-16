@@ -15,7 +15,8 @@ Felix~Hill David~Saxton, Edward~Grefenstette and Pushmeet Kohli.
 
 \bibitem{bing}
 Yusuf Mehdi.
-\newblock Announcing the next wave of ai innovation with microsoft bing and edge.
+\newblock Announcing the next wave of ai innovation with microsoft bing and
+  edge.
 \newblock Blog post, May 2023.
 
 \bibitem{chatgpt}
@@ -29,8 +30,10 @@ David Saxton, Edward Grefenstette, Felix Hill, and Pushmeet Kohli.
 \newblock Dataset, 2020.
 
 \bibitem{tptransformer}
-Imanol Schlag, Paul Smolensky, Roland Fernandez, Nebojsa Jojic, J{\"u}rgen Schmidhuber, and Jianfeng Gao.
-\newblock Enhancing the transformer with explicit relational encoding for math problem solving.
+Imanol Schlag, Paul Smolensky, Roland Fernandez, Nebojsa Jojic, J{\"u}rgen
+  Schmidhuber, and Jianfeng Gao.
+\newblock Enhancing the transformer with explicit relational encoding for math
+  problem solving.
 \newblock {\em arXiv preprint arXiv:1910.06611}, 2019.
 
 \end{thebibliography}
